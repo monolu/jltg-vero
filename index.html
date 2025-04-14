@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Hide + Seek Rulebook</title>
+  <title>Hide + Seek Rules</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://use.typekit.net/bao0nmc.css">
   <style>
@@ -13,60 +13,103 @@
       padding: 1rem;
       line-height: 1.5;
     }
+
+    /* Make a sticky header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      background: #fff; /* so it doesn't go transparent */
+      transition: transform 0.3s ease; /* for the hide-on-scroll */
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+    /* when we want it hidden, we apply a transform so it slides up */
+    header.header-hidden {
+      transform: translateY(-100%);
+    }
+
+    /* style the nav links horizontally */
     nav {
-      margin-bottom: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
     }
     nav a {
-      margin-right: 1rem;
       text-decoration: none;
       font-weight: bold;
       color: #333;
+      padding: 0.25rem 0.5rem;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      transition: border-color 0.2s ease-in-out;
     }
+    nav a:hover {
+      border-color: #333;
+    }
+    nav a.active {
+      border-color: #000; 
+      background: #000;
+      color: #fff;
+    }
+    hr {
+      margin: 2rem 0;
+    }
+
+    /* existing style overrides you had */
     h2 {
-        font-size: 1em;
-        background-color: #000;  /* black background */
-        color: #fff;             /* white text */
-        display: inline-block;   /* keeps the background size to just behind the text */
-        padding: 0.1em 0.25em;   /* some breathing room around the text */
-        margin-bottom: 0;
-        margin-top: 20px;
-        border-radius: 3px;
+      font-size: 1em;
+      background-color: #000;
+      color: #fff;
+      display: inline-block;
+      padding: 0.1em 0.25em;
+      margin-bottom: 0;
+      margin-top: 20px;
+      border-radius: 3px;
     }
     h3 {
-        font-size: 1em;
-        /* make it a block so the border spans the entire width */
-        display: block;
-        /* a bottom border that acts like an underline across the full line */
-        border-bottom: 1px solid #000;
-        /* some spacing so the text doesn’t butt up against the line */
-        padding-bottom: 0.25em;
-        margin-top: 2em;
-        margin-bottom: 1em;        
+      font-size: 1em;
+      display: block;
+      border-bottom: 1px solid #000;
+      padding-bottom: 0.25em;
+      margin-top: 2em;
+      margin-bottom: 1em;
     }
     h4 {
-        margin-bottom: -10px;
+      margin-bottom: -10px;
     }
+
+    h1[id], h2[id], h3[id], h4[id] {
+      scroll-margin-top: 5rem; /* pick your sweet spot */
+    }
+
+    section {
+      scroll-margin-top: 5rem; /* pick your sweet spot */
+      margin-bottom: 2rem;
+    }
+
   </style>
 </head>
 <body>
+<h1>Hide + Seek Rules</h1>
 
-<h1>Hide And Seek Rulebook</h1>
-
-<nav>
-  <!-- quick links to major sections -->
-  <a href="#section1">QUICKSTART GUIDE</a>
-  <a href="#section2">SETTING UP YOUR MAP</a>
-  <a href="#section3">SEEKING</a>
-  <a href="#section_hiding">HIDING</a>
-  <a href="#section_deck">THE HIDER DECK</a>
-  <a href="#section_tips">GENERAL TIPS</a>
-  <a href="#section_experimental">EXPERIMENTAL DESIGNS</a>
-</nav>
-
-<hr />
+<header id="mainHeader">
+  <nav>
+    <!-- quick links to major sections -->
+    <a href="#sec1">1. QUICKSTART GUIDE</a>
+    <a href="#sec2">2. SETTING UP YOUR MAP</a>
+    <a href="#sec3">3. SEEKING</a>
+    <a href="#sec4">4. HIDING</a>
+    <a href="#sec5">5. GENERAL TIPS</a>
+    <a href="#sec6">6. EXPERIMENTAL DESIGNS</a>
+  </nav>
+</header>
 
 <!-- SECTION 1 -->
-<h4 style="margin-bottom:0;" id="section1">SECTION 1</h4>
+<section id="sec1">
+<h4 style="margin-bottom:0;">SECTION 1</h4>
 <h1 style="margin-top:0;">QUICKSTART GUIDE</h1>
 
 <h2>OVERVIEW</h2>
@@ -159,7 +202,7 @@ The length of the hiding period is determined by game size:</p>
 
 <h2 style="background:rgb(239, 181, 19); margin-top:10px;">SMALL</h2><p style="display: inline; margin-left: 26px;"> 30 minutes</p><br>
 <h2 style="background:rgb(208, 102, 41); margin-top:10px;">MEDIUM</h2><p style="display: inline; margin-left: 15px;"> 1 hour</p><br>
-<h2 style="background:rgb(208, 41, 41); margin-top:10px;">LARGE</h2><p style="display: inline; margin-left: 29px;"> 2 hours</p>
+<h2 style="background:rgb(208, 41, 41); margin-top:10px;">LARGE</h2><p style="display: inline; margin-left: 28px;"> 2 hours</p>
 
 <p>Lastly, all seekers should make sure to turn on some form of tracker
 during this period to ensure that the hider can follow their movement
@@ -254,9 +297,11 @@ rounds, the player with the longest single hiding run is declared
 the winner.</p>
 
 <hr style="margin-top: 40px; margin-bottom: 40px;"/>
+</section>
 
+<section id ="sec2">
 <!-- SECTION 2 -->
-<h4 style="margin-bottom:0;" id="section2">SECTION 2</h4>
+<h4 style="margin-bottom:0;">SECTION 2</h4>
 <h1 style="margin-top:0;">SETTING UP YOUR MAP</h1>
 <p>Our goal, when designing Hide and Seek, was to make a game that can
 be played almost anywhere in the world. In order to accomplish this,
@@ -283,7 +328,7 @@ different scale games:</p>
 
 <h2 style="background:rgb(239, 181, 19); margin-top:10px;">SMALL</h2><p style="display: inline; margin-left: 26px;"> 30-100 stations; 10 - 100 sq. miles</p><br>
 <h2 style="background:rgb(208, 102, 41); margin-top:10px;">MEDIUM</h2><p style="display: inline; margin-left: 15px;"> 100 - 500 stations; 100 - 1,000 sq. miles</p><br>
-<h2 style="background:rgb(208, 41, 41); margin-top:10px;">LARGE</h2><p style="display: inline; margin-left: 29px;"> 500+ stations; 1,000+ sq. miles</p>
+<h2 style="background:rgb(208, 41, 41); margin-top:10px;">LARGE</h2><p style="display: inline; margin-left: 28px;"> 500+ stations; 1,000+ sq. miles</p>
 
 <p>(As a point of comparison, our game in Switzerland comprised of
 1,800 stations, and our game in Japan was slightly over 8,500, both of
@@ -327,9 +372,11 @@ the game would end whenever you reach the predetermined number
 of rounds or the timer runs out, whichever comes first.</p>
 
 <hr style="margin-top: 40px; margin-bottom: 40px;"/>
+</section>
 
+<section id="sec3">
 <!-- SECTION 3 -->
-<h4 style="margin-bottom:0;" id="section3">SECTION 3</h4>
+<h4 style="margin-bottom:0;">SECTION 3</h4>
 <h1 style="margin-top:0;">SEEKING</h1>
 <p>As the seeker, it is your job to move and gather information as
 efficiently as possible. At your disposal are 80 questions, which
@@ -784,7 +831,9 @@ becoming a “tentacle” reaching out from the seekers.</p>
 <p>After a tentacle question has been answered, the hider may draw 4
 cards and keep 2.</p>
 
-<p>Tentacle questions cannot be used in small (S) games.</p>
+<p style="display:inline;">Tentacle questions cannot be used in</p>
+<h2 style="background:rgb(239, 181, 19); margin-top:10px;">SMALL</h2>
+<p style="display:inline">games.</p><p></p>
 
 <b style="display:inline; border-bottom: 1px solid #000;">These tentacle questions are available to the seekers in</b>
 <h2 style="background:rgb(208, 102, 41); margin-top:10px;">MEDIUM</h2>
@@ -811,9 +860,11 @@ cards and keep 2.</p>
   <p>Anything correctly categorized as an amusement park by your mapping app.</p>
 
 <hr style="margin-top: 40px; margin-bottom: 40px;"/>
+</section>
 
 <!-- HIDING SECTION -->
-<h4 style="margin-bottom:0;" id="section_hiding">SECTION 4</h4>
+<section id="sec4">
+<h4 style="margin-bottom:0;">SECTION 4</h4>
 <h1 style="margin-top:0;">HIDING</h1>
 <p>As the hider, it is your job to stay hidden for as long as possible. Stay
 hidden longer than anyone else, and the game is yours. At the start
@@ -866,31 +917,47 @@ to remain flexible. We recommend spending some time scouting
 your zone for a perfect final hiding spot.</p>
 
 <h2>HIDING SPOTS</h2>
-<p>Once the seeking party enters your hiding zone on foot (i.e., they’re
-no longer riding transit), the end game begins. At this point, you
-can no longer move freely; you must stay in a publicly accessible
-hiding spot until they find you.</p>
-
-<p>Your hiding spot must be:</p>
-<ul>
-  <li>Publicly accessible during all game hours (excluding rest periods).
-  That means the seekers must be able to get in at any time. You can’t
-  hide in a locked or private location.</li>
-  <li>Within 10 feet of a marked path or road on the map. Seekers must
-  theoretically be able to follow walking directions to within 10 feet
-  of you.</li>
-  <li>Not in a bathroom stall or inside someone’s home.</li>
-</ul>
-
-<p>If you’re not where you want to be when the end game starts, you
-must stay put in the first publicly accessible spot you can get to
-immediately. (If, for example, you planned on being in a particular
-park but you couldn’t get there before the seekers arrived, you’d have
-to pick a new final spot on the fly.)</p>
-
-<p>We recommend you scope out your zone and look for the perfect
-hiding spot well beforehand—a clever enough spot can buy you a lot
-of extra time once the seekers have narrowed down your station.</p>
+<p>
+    Once the seekers have entered your hiding zone and the end game has begun
+    you must stay put in a single spot until they've found you—this is your
+    final hiding spot.
+</p>
+<p>
+    Hiding spots can be anywhere within your hiding zone, but they must be
+    somewhere that is publicly accessible during all game hours (all hours
+    you will be playing excluding rest periods.) You cannot, for example
+    hide in a bathroom stall or someone's house. This does not mean that
+    your hiding spot has to be on literal public property, but rather
+    that the seekers must be able to access it at any point during the
+    game. You should also make sure that staying in your spot for an
+    extended period of time will not raise any suspicions or create
+    the potential for you to get kicked out—for this reason we'd
+    suggest avoiding stores or other businesses, even if they are
+    open during all game hours.
+</p>
+<p>
+    Your hiding spot must also be within 10 feet of a marked path
+    or road on the app(s) that you are using for your game—no wandering
+    off into the wilderness or swimming out to sea. Viable paths and roads
+    should be easy to discern on any map app, but if there's any question
+    as to whether one counts, the test is whether or not your map app will
+    use them for walking directions. In other words, the seekers should be
+    able to theoretically follow a route generated by the app to be within
+    10 feet of your hiding spot.
+</p>
+<p>
+    Your hiding spot is considered final the moment that the end game starts.
+    If you aren't where you want to be when the seekers enter your hiding zone, 
+    too bad—wherever you're standing at that moment is your hiding spot. (If, 
+    for whatever reason, you aren't somewhere publicly accessible when the end 
+    game starts, you must immediately go to the nearest possible publicly 
+    accessible spot and stay there instead.)
+</p>
+<p>
+    We recommend spending some time scoping out your zone and looking for the
+    perfect hiding spot—a clever enough spot can buy you an hour or more even
+    after the seekers have found your station.
+</p>
 
 <h2>THE HIDER DECK</h2>
 <p>The hider deck is your one and only weapon to use against the
@@ -904,10 +971,11 @@ full and you draw another card, you must immediately discard or
 play cards until you’re back down to 6.</p>
 
 <p>Cards from the hider deck can provide you with all sorts of
-powers—time bonuses, advantage plays in response to questions,
-extra moves at the end of your run—whatever you think is best. There
-are three different types of cards you can draw from the hider deck:
-Time Bonuses, Powerups, and Curses.</p>
+    advantages—some in response to questions, some at the end of your
+    round, and some whenever you think they make the most sense. In total,
+    there are three different types of cards you can draw from hider deck.
+    Time Bonuses, Powerups, and Curses.
+</p>
 
 <h3>TIME BONUSES</h3>
 <p>Time bonus cards come in varying values and count toward the
@@ -1223,9 +1291,12 @@ ratios can be adjusted up or down depending on how much agency
 you want to give the hider.</p>
 
 <hr style="margin-top: 40px; margin-bottom: 40px;"/>
+</section>
 
 <!-- GENERAL TIPS -->
-<h2 id="section_tips">GENERAL TIPS</h2>
+<section id="sec5">
+<h4 style="margin-bottom:0;">SECTION 5</h4>
+<h1 style="margin-top:0;">GENERAL TIPS</h1>
 <p>Make no mistake, Hide and Seek can be a physically and mentally
 draining game. Particularly for medium and large games, which
 might last multiple days, adequate preparation is hugely important
@@ -1269,9 +1340,12 @@ Seek:</p>
   unexpected event.</p>
 
 <hr style="margin-top: 40px; margin-bottom: 40px;"/>
+</section>
 
 <!-- EXPERIMENTAL GAME DESIGNS -->
-<h2 id="section_experimental">EXPERIMENTAL GAME DESIGNS</h2>
+ <section id="sec6">
+<h4 style="margin-bottom:0;">SECTION 6</h4>
+<h1 style="margin-top:0;">EXPERIMENTAL GAME DESIGNS</h1>
 <p>In the previous sections, we’ve detailed the rules for the basic
 configurations of Hide and Seek. We have, however, considered
 some alternate versions of the game, and we thought we’d detail
@@ -1364,6 +1438,59 @@ Hide and Seek could work across the entire globe:</p>
 <p>Anyway, there’s almost no way this will be balanced. We don’t
 recommend it, but if you do it, we want to hear about it out of
 morbid curiosity.</p>
+</section>
+<script>
+      const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
 
+  // to get better results, we watch multiple thresholds,
+  // so we get an event whenever the intersection ratio crosses any of these.
+  // that way, short sections or end sections still get recognized.
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: [0, 0.25, 0.5, 0.75, 1]
+  };
+
+  // keep track of each section's ratio in a map
+  let sectionRatioMap = {};
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // store the intersection ratio of this section
+      sectionRatioMap[entry.target.id] = entry.intersectionRatio;
+    });
+
+    // figure out which section is currently "on top" – i.e. largest ratio
+    let maxRatio = 0;
+    let maxSectionId = null;
+    for (let id in sectionRatioMap) {
+      let ratio = sectionRatioMap[id];
+      if (ratio > maxRatio) {
+        maxRatio = ratio;
+        maxSectionId = id;
+      }
+    }
+
+    // highlight the matching nav link, unhighlight others
+    navLinks.forEach(link => {
+      let linkId = link.getAttribute('href').replace('#','');
+      if (linkId === maxSectionId) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+
+  }, observerOptions);
+
+  // observe all sections
+  sections.forEach(sec => {
+    observer.observe(sec);
+    // initialize their ratio to 0 in the map
+    sectionRatioMap[sec.id] = 0;
+  });
+
+</script>
 </body>
 </html>
