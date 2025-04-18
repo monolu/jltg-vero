@@ -14,23 +14,21 @@
       line-height: 1.5;
     }
 
-    /* Make a sticky header */
     header {
       position: sticky;
       top: 0;
       z-index: 9999;
-      background: #fff; /* so it doesn't go transparent */
-      transition: transform 0.3s ease; /* for the hide-on-scroll */
+      background: #fff; 
+      transition: transform 0.3s ease; 
       border-bottom: 2px solid #ddd;
       padding-bottom: 10px;
       padding-top: 10px;
     }
-    /* when we want it hidden, we apply a transform so it slides up */
+
     header.header-hidden {
       transform: translateY(-100%);
     }
 
-    /* style the nav links horizontally */
     nav {
       display: flex;
       flex-wrap: wrap;
@@ -58,7 +56,6 @@
       margin: 2rem 0;
     }
 
-    /* existing style overrides you had */
     h2 {
       font-size: 1em;
       background-color: #000;
@@ -82,11 +79,11 @@
     }
 
     h1[id], h2[id], h3[id], h4[id] {
-      scroll-margin-top: 5rem; /* pick your sweet spot */
+      scroll-margin-top: 5rem;
     }
 
     section {
-      scroll-margin-top: 5rem; /* pick your sweet spot */
+      scroll-margin-top: 5rem;
       margin-bottom: 2rem;
     }
 
@@ -127,8 +124,157 @@ The basic gameplay can be summed up in five steps:</p>
   <li>At the end, <b>whoever hid the longest wins.</b></li>
 </ol>
 
-<p>While the overall structure is simple, there's a bit more you'll need to
-know before playing. Starting with:</p>
+<h3>Hiders:</h3>
+<ul>
+  <li>Your hiding zone must be anchored to a set (valid) station - make sure you know what your station is, since many questions revolve around it
+  </li>
+  <li>If you are in transit when your timer ends, you must backtrack to the last stop you passed through. (but try to avoid this at all!) You may need to call a game pause.
+  </li>
+  <li>Hiders have 5 minutes to answer all questions (except photo questions, which are 10 minutes)
+  </li>
+  <li>Hiders have a hand limit of 6 cards
+  </li>
+  <li>Once the seekers are in the hiding zone, and not on a mode of transit, the “end game” begins and the hider must stay in a final publicly accessible hiding spot
+  </li>
+  <li>Hiders are found once the seekers are within 5 feet and have spotted them
+  </li>
+  <li>The hiding spot must be publicly accessible at all times - and shouldn’t be anywhere you might get kicked out of (e.g. a business) - and must be within 10 feet of a marked path on Google Maps
+  </li>
+  <li>Hiders can’t use additional modes of transit (e.g. buses), even mid-journey, while travelling
+  </li>
+  <li>Multiple curses can be played at once, but there cannot be more than one curse active at a time that prevents seekers from asking questions or from taking transit
+  </li>
+</ul>
+
+<h3>Seekers:</h3>
+<ul>
+  <li>Questions can be asked multiple times, but for twice the cost (or 3 times the cost for the 3rd ask, etc.)
+  </li>
+  <li>Google Street View is banned
+  </li>
+  <li>For matching and measuring questions: If locations are not within a map’s boundaries, operate as if they do not exist.
+  </li>
+  <li>Distances are measured to the map icon on Google Maps
+  </li>
+</ul>
+
+<h3>Our Map</h3>
+<p>Our map area is the <b>Stockholm Metro</b> system. That means all metro stations are valid hiding spots. How you get there doesn't matter as long as your mode of transit accepts an SL ticket. Buses, trains, ferries, and of course walking are all fair game. You may not use scooters or rental bikes.</p>
+
+<p>The starting location for the first team of hiders will be T-Centralen. Hiders have a 30 minute head start, and their hiding zone is a 1/4 mile (0.4km) radius from their station. </p>
+<img src="metro_map.png" style="width:100%;">
+
+<h3>Stockholm Specifics</h3>
+<h4>Administrative Divisions</h4>
+<p>We will <a href="https://valresultat.svt.se/2022/riksdagsval-0180-stockholm.html">use this website</a> for our Administrative Divisions. It goes like this:
+  <ol>
+    <li>Municipality (kommun)</li>
+    <li>Municipality District (kommunalvalkrets)</li>
+    <li>Electoral District (valkrets)</li>
+  </ol> 
+For the purposes of the game, we have no fourth-level Administrative Division.
+</p>
+<h4>High-Speed Train Lines</h4>
+<p>For the sake of being able to easily answer this question, consider “High-Speed Train Line” to be any national rail line.</p>
+<h4>Landmasses</h4>
+<p>For our purposes, landmasses are areas broken up by waterways. If you're on a bridge between two landmasses, you count as matching both.</p>
+
+<h2>QUESTIONS</h2>
+<h3>Matching</h3>
+<i>“Is your nearest ___ the same as ours?”</i>
+<p>Valid answers are “yes”, “no”, or “null” (N/A). The hiders have 5 minutes to answer, and get to Draw 3, and Keep 1 after answering.</p>
+<ul>
+  <li>Commercial Airport</li>
+  <li>Transit Line [Effectively: Does our train stop at your station?]</li>
+  <li>Station Name’s Length</li>
+  <li>Street or Path</li>
+  <li>1st/2nd/3rd Administrative Division</li>
+  <li>Mountain</li>
+  <li>Landmass</li>
+  <li>Park</li>
+  <li>Amusement Park</li>
+  <li>Zoo</li>
+  <li>Aquarium</li>
+  <li>Golf Course</li>
+  <li>Museum</li>
+  <li>Movie Theater</li>
+  <li>Hospital</li>
+  <li>Library</li>
+  <li>Foreign Consulate</li>
+</ul>
+
+<h3>Measuring</h3>
+<i>“Compared to me/us, are you closer to or further from ___?”</i>
+<p>Valid answers are “closer”, “further”, or “null” (N/A). The hiders have 5 minutes to answer, and get to Draw 3, and Keep 1 after answering.</p>
+<ul>
+  <li>Commercial Airport</li>
+  <li>High-Speed Train Line</li>
+  <li>Rail Station</li>
+  <li>International Border</li>
+  <li>1st/2nd Administrative Division Border</li>
+  <li>Sea Level [Effectively, “Is your altitude higher or lower than me/us?”]  </li>
+  <li>Body of Water</li>
+  <li>Coastline</li>
+  <li>Mountain</li>
+  <li>Park</li>
+  <li>Amusement Park</li>
+  <li>Zoo</li>
+  <li>Aquarium</li>
+  <li>Golf Course</li>
+  <li>Museum</li>
+  <li>Movie Theater</li>
+  <li>Hospital</li>
+  <li>Library</li>
+  <li>Foreign Consulate</li>
+</ul>
+
+<h3>Radar</h3>
+<i>“Are you within ___ of me/us?”</i>
+<p>Valid answers are “yes” or “no”. The hiders have 5 minutes to answer, and get to Draw 2, and Keep 1 after answering.</p>
+<ul>
+  <li>¼ Mile</li>
+  <li>½ Mile</li>
+  <li>1 Mile</li>
+  <li>3 Miles</li>
+  <li>5 Miles</li>
+  <li>10 Miles</li>
+  <li>25 Miles</li>
+  <li>50 Miles</li>
+  <li>100 Miles</li>
+  <li>Choose (for this, you may use any distance you wish)</li>
+</ul>
+
+<h3>Thermometer</h3>
+<i>“After travelling ___, am I/are we hotter or colder?”</i>
+<p>Valid answers are “hotter” or “colder”. The hiders have 5 minutes to answer, and get to Draw 2, and Keep 1 after answering.</p>
+<ul>
+  <li>½ Mile</li>
+  <li>3 Miles</li>
+</ul>
+
+<h3>Photo</h3>
+<i>“Send me/us a photo of ___”</i>
+<p>Valid answers are a photo that meets the full specification of the photo question, or “I cannot answer the question” in situations where the subject of the photo doesn’t exist within the hiding zone. The hiders have 5 minutes to answer, and get to Draw 1 after answering.</p>
+<ul>
+  <li>A Tree (Must include entire tree)</li>
+  <li>The Sky (Place phone on ground, and shoot direfctly up)</li>
+  <li>You (Selfie mode, arm parallel to the ground, fully extended)</li>
+  <li>Widest Street (Must include both sides of the street)</li>
+  <li>Tallest structure in your sightline (Tallest from your current perspective / sightline. Must include top and both sides. The top must be in the top 1/3rd of the frame)</li>
+  <li>Any building visible from station (Must stand directly outside transit station entrance. If station has multiple entrances, you may choose. Must include roof, both sides, with the top of the building in the top 1/3rd of the frame)</li>
+</ul>
+
+<h2>TOOLS</h2>
+<h3>Conversion Card</h3>
+<p>Although the game operates in miles/ft and any measurements that rely on accuracy should use those units, some metric conversions are provided below.</p>
+<img src="unit_conversion_card.png" style="width:100%">
+<h3>Mapping</h3>
+<p>We use Google Maps for Mapping, <a href="https://support.google.com/maps/answer/1628031?hl=en-GB&co=GENIE.Platform%3DAndroid&oco=1">measuring distances</a>, and sharing live location.</p>
+<p>Players may use <a href="https://play.google.com/store/apps/details?id=com.service.fullscreenmaps&hl=en_GB">Toolmaps</a> for visualizing areas, measuring radiuses, and measuring distances. To draw a perpendicular bisector, draw a radius of equal size from each of the points, and draw a line between the two points of intersection.</p>
+<p>There is a <a href="https://taibeled.github.io/JetLagHideAndSeek/">fan-made web app</a> that may also be used to visualize areas. Only certain questions are supported, so it's not recommended as a primary mapping tool, but it's very helpful to quickly visualize things like thermometers and radars, along with some matching and mesauring questions.</p>
+<p>Another tool that might be useful is <a href="https://app.traveltime.com/">TravelTime</a>, an app that maps the area someone could reach by public transport within a certain time from a given location.</p>
+
+<hr style="margin-top: 40px; margin-bottom: 40px;"/>
 
 <h2>CHOOSING GAME SIZE</h2>
 <p>Hide and Seek is configured to be played at three different scales:
@@ -137,18 +283,36 @@ designed to work best with your map’s size and complexity. Before
 you do any further set up, you’ll need to determine whether you
 want to play a small, medium, or large game of Hide and Seek.</p>
 
-<h2 style="background:rgb(239, 181, 19); margin-top:10px;">SMALL</h2>
-<p style="display:inline; margin-left: 21px;">Spans a single town, small city, or portion of a large city; lasts 4–8 hours</p>
-<p style="margin-left: 76px; margin-top:5px;"><i>Examples: Lower Manhattan, Winston-Salem, NC</i></p>
+<div style="display: flex;">
+<span style="margin-right:31px;">
+<h2 style="background:rgb(239, 181, 19); margin-top:10;">SMALL</h2>
+</span>
+<span>
+<p>Spans a single town, small city, or portion of a large city; lasts 4–8 hours</p>
+<p><i>Examples: Lower Manhattan, Winston-Salem, NC</i></p>
+</span>
+</div>
 
-<h2 style="background:rgb(208, 102, 41); margin-top:10px;">MEDIUM</h2>
-<p style="display:inline; margin-left: 10px;">Spans a major city, metro area; lasts about 1 day</p>
-<p style="margin-left: 76px; margin-top:5px;"><i>Examples: Hong Kong, New York City, Greater London, UK</i></p>
+<div style="display: flex;">
+  <span style="margin-right:20px;">
+    <h2 style="background:rgb(208, 102, 41); margin-top:10;">MEDIUM</h2>
+  </span>
+  <span>
+    <p>Spans a major city, metro area; lasts about 1 day</p>
+    <p><i>Examples: Hong Kong, New York City, Greater London, UK</i></p>    
+  </span>
+</div>
 
-<h2 style="background:rgb(208, 41, 41); margin-top:10px;">LARGE</h2>
-<p style="display: inline; margin-left: 23px;">Spans a large region, an entire country, or several
-small countries; lasts 2 to 4 days</p>
-<p style="margin-left: 76px; margin-top:5px;"><i>Examples: Switzerland, Japan, New England, US</i></p>
+<div style="display: flex;">
+  <span style="margin-right:33px;">
+    <h2 style="background:rgb(208, 41, 41); margin-top:10;">LARGE</h2>
+  </span>
+  <span>
+    <p>Spans a large region, an entire country, or several
+      small countries; lasts 2 to 4 days</p>
+    <p><i>Examples: Switzerland, Japan, New England, US</i></p>      
+  </span>
+</div>
 
 <p>The other major decision that will need to be made concerning game
 length is whether you want to add additional rounds. In the simplest
