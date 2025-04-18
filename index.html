@@ -1604,7 +1604,7 @@ recommend it, but if you do it, we want to hear about it out of
 morbid curiosity.</p>
 </section>
 <script>
-      const sections = document.querySelectorAll('section[id]');
+  const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('nav a');
 
   // to get better results, we watch multiple thresholds,
@@ -1655,6 +1655,33 @@ morbid curiosity.</p>
     sectionRatioMap[sec.id] = 0;
   });
 
+  let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+  const header = document.getElementById('mainHeader');
+  let ignoreScroll = false;
+
+  // when you click a nav link, force-show the header and ignore the next scroll
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      ignoreScroll = true;
+      header.classList.remove('header-hidden');
+      // after a little bit, go back to normal scroll behaviour
+      setTimeout(() => { ignoreScroll = false; }, 200);
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+    if (ignoreScroll) {
+      lastScrollY = currentScrollY;
+      return;
+    }
+    if (currentScrollY > lastScrollY && currentScrollY > 50) {
+      header.classList.add('header-hidden');
+    } else {
+      header.classList.remove('header-hidden');
+    }
+    lastScrollY = currentScrollY;
+  });
 </script>
 </body>
 </html>
